@@ -9,9 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b50d05b410acf847aebfa5d1eeb307b, type: 3}
-  m_Name: Ability_BasicAttack
-  m_EditorClassIdentifier: Assembly-CSharp::AbilityData
+  m_Script: {fileID: 11500000, guid: 4cb3aecf83dd5be46befabcfb779f922, type: 3}
+  m_Name: BasicSlash
+  m_EditorClassIdentifier: Assembly-CSharp::ConeAbilityData
   abilityName: New Ability
   description: 
   icon: {fileID: 0}
+  damage: 25
+  cooldown: 0.5
+  vfxPrefab: {fileID: 0}
+  sfx: {fileID: 0}
+  targetLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  range: 4
+  coneAngle: 60

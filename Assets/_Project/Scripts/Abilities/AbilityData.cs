@@ -1,7 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewAbility", menuName = "ARPG/Ability Data", order = 0)]
-public class AbilityData : ScriptableObject
+public abstract class AbilityData : ScriptableObject
 {
     [Header("Identity")] 
     public string abilityName = "New Ability";
@@ -11,7 +10,6 @@ public class AbilityData : ScriptableObject
     
     [Header("Stats")] 
     public float damage = 25f;
-    public float radius = 3f;
     public float cooldown = 0.5f;
 
     [Header("Visuals")] 
@@ -20,5 +18,34 @@ public class AbilityData : ScriptableObject
 
     [Header("Targeting")]
     public LayerMask targetLayers;
+
+    public abstract void Execute(AbilityContext context);
+
+    protected float GetFinalDamage(AbilityContext context)
+    {
+        float final = damage;
+        if (context.stats != null)
+        {
+            final *= context.stats.GetDamageMultiplier();
+        }
+
+        return final;
+    }
+
+    protected void ApplyDamage(Collider hit, AbilityContext context)
+    {
+        IDamageable damageable = hit.GetComponent<IDamageable>();
+        if (damageable==null) damageable = hit.GetComponentInParent<IDamageable>();
+        if (damageable == null) return;
+
+        DamageInfo info = new DamageInfo(GetFinalDamage(context), hit.transform.position);
+        damageable.TakeDamage(info);
+    }
+
+    protected void SpawnFeedback(Vector3 position)
+    {
+        if (vfxPrefab != null) Instantiate(vfxPrefab, position, Quaternion.identity);
+        if (sfx != null) AudioSource.PlayClipAtPoint(sfx, position);
+    }
 
 }

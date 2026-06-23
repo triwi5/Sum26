@@ -773,7 +773,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5dd7079197dffb41b543e7b3315616a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AbilityRunner
-  ability: {fileID: 11400000, guid: 53092916d606b91499cde431b982a1fd, type: 2}
+  ability: {fileID: 11400000, guid: 7a1e3f84ba116fc4ba442ebbd70ae107, type: 2}
   casterStats: {fileID: 0}
 --- !u!114 &831500711
 MonoBehaviour:
