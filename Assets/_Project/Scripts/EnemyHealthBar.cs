@@ -1,11 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class EnemyHealthBar : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Health health;
     [SerializeField] private Image fillImage;
+    [SerializeField] private Image delayedFillImage;
 
+    [Header("Delayed Bar Behavior")] 
+    [SerializeField] private float delayBeforeDeplete = 0.4f;
+    [SerializeField] private float depleteDuration = 0.3f;
+
+    private Tween delayedTween;
 
     private void Awake()
     {
@@ -22,27 +30,44 @@ public class EnemyHealthBar : MonoBehaviour
         }
     }
 
-    private void OnDisabled()
+    private void OnDisable()
     {
         if (health != null)
         {
             health.OnDamaged -= HandleDamaged;
         }
-    }
 
-    private void HandleDamaged(float amount, Vector3 hitPoint)
-    {
-        UpdateFill();
+        delayedTween?.Kill();
     }
-
-   private void UpdateFill()
-    {
-        if (health == null || fillImage == null) return;
-        fillImage.fillAmount = health.HealthPercent;
-    }
+    
+    
 
     private void Start()
     {
-        UpdateFill();
+        if (fillImage != null)
+        {
+            fillImage.fillAmount = health.HealthPercent;
+        }
+
+        if (delayedFillImage != null)
+        {
+            delayedFillImage.fillAmount = health.HealthPercent;
+        }
+    }
+    
+    private void HandleDamaged(float amount, Vector3 hitPoint)
+    {
+        float newPercent = health.HealthPercent;
+
+        if (fillImage != null)
+        {
+            fillImage.fillAmount = newPercent;
+        }
+
+        delayedTween?.Kill();
+
+        delayedTween = DOTween.Sequence()
+            .AppendInterval(delayBeforeDeplete)
+            .Append(delayedFillImage.DOFillAmount(newPercent, depleteDuration).SetEase(Ease.InQuad));
     }
 }
