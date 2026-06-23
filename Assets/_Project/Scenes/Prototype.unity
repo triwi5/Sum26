@@ -214,6 +214,40 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   FollowOffset: {x: 10, y: 13, z: -10}
+--- !u!1 &114027217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1618809805906504238, guid: db4a905a12d43684790410ceb79595ea, type: 3}
+  m_PrefabInstance: {fileID: 7797739449285287922}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &114027226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114027217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec4c19a7d1b365c4cbe187e819244fee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageNumberSpawner
+  damageNumberPrefab: {fileID: 1073013176893115710, guid: 4c34d2ebebcfb644d86f197cb3025bb9, type: 3}
+  spawnOffset: {x: 0, y: 1.5, z: 0}
+--- !u!114 &114027227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 114027217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5c008833d67804489939e78eea06961, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitFlash
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashDuration: 0.3
+  targetRenderer: {fileID: 7797739449285287923}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,6 +1016,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 831500706}
+    - target: {fileID: 5971384446294149547, guid: db4a905a12d43684790410ceb79595ea, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6489216456090160064, guid: db4a905a12d43684790410ceb79595ea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
@@ -1025,8 +1063,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1618809805906504238, guid: db4a905a12d43684790410ceb79595ea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 114027226}
+    - targetCorrespondingSourceObject: {fileID: 1618809805906504238, guid: db4a905a12d43684790410ceb79595ea, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 114027227}
   m_SourcePrefab: {fileID: 100100000, guid: db4a905a12d43684790410ceb79595ea, type: 3}
+--- !u!23 &7797739449285287923 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 36320849354752965, guid: db4a905a12d43684790410ceb79595ea, type: 3}
+  m_PrefabInstance: {fileID: 7797739449285287922}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
