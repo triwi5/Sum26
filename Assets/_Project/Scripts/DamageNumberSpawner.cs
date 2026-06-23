@@ -23,11 +23,11 @@ public class DamageNumberSpawner : MonoBehaviour
         health.OnDamaged -= HandleDamaged;
     }
 
-    private void HandleDamaged(float amount, Vector3 hitPoint)
+    private void HandleDamaged(DamageInfo info)
     {
         if (damageNumberPrefab == null) return;
 
         DamageNumber popup = Instantiate(damageNumberPrefab);
-        popup.Show(amount, transform.position + spawnOffset);
+        popup.Show(info.amount, transform.position + spawnOffset);
     }
 }

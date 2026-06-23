@@ -55,7 +55,7 @@ public class EnemyHealthBar : MonoBehaviour
         }
     }
     
-    private void HandleDamaged(float amount, Vector3 hitPoint)
+    private void HandleDamaged(DamageInfo info)
     {
         float newPercent = health.HealthPercent;
 

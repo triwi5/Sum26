@@ -11,7 +11,7 @@ public class Health : MonoBehaviour, IDamageable
     public float MaxHealth => maxHealth;
     public float HealthPercent => currentHealth / maxHealth;
 
-    public event Action<float, Vector3> OnDamaged;
+    public event Action<DamageInfo> OnDamaged;
     public event Action OnDied;
 
     private void Awake()
@@ -19,13 +19,13 @@ public class Health : MonoBehaviour, IDamageable
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage(float amount, Vector3 hitPoint)
+    public void TakeDamage(DamageInfo info)
     {
         if (currentHealth <= 0f) return;
 
-        currentHealth -= amount;
+        currentHealth -= info.amount;
         
-        OnDamaged?.Invoke(amount, hitPoint);
+        OnDamaged?.Invoke(info);
 
         if (currentHealth <= 0f)
         {

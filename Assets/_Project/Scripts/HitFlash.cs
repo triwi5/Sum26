@@ -45,7 +45,7 @@ public class HitFlash : MonoBehaviour
         activeFlashTween?.Kill();
     }
 
-    private void HandleDamaged(float amount, Vector3 hitPoint)
+    private void HandleDamaged(DamageInfo info)
     {
         Flash();
     }
