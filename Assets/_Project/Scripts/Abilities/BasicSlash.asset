@@ -21,6 +21,6 @@ MonoBehaviour:
   sfx: {fileID: 0}
   targetLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   range: 4
   coneAngle: 60
