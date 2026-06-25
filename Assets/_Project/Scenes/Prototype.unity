@@ -630,6 +630,7 @@ GameObject:
   - component: {fileID: 831500709}
   - component: {fileID: 831500711}
   - component: {fileID: 831500710}
+  - component: {fileID: 831500712}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -748,6 +749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   moveSpeed: 6
   gravity: -20
+  bodyRotationSpeed: 15
 --- !u!114 &831500709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -788,6 +790,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterStats
   damageMultiplier: 1
+--- !u!114 &831500712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831500702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b669934a3c385f24cacaed50365a54c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAiming
+  aimPlaneLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,7 +945,7 @@ GameObject:
   - component: {fileID: 1772180150}
   - component: {fileID: 1772180149}
   - component: {fileID: 1772180148}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}

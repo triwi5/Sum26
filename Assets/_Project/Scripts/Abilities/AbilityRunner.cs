@@ -10,6 +10,7 @@ public class AbilityRunner : MonoBehaviour
     public bool IsReady => cooldownTimer <= 0f;
 
     private float cooldownTimer;
+    private IAimProvider aimProvider;
 
     private void Awake()
     {
@@ -17,6 +18,8 @@ public class AbilityRunner : MonoBehaviour
         {
             casterStats = GetComponentInParent<CharacterStats>();
         }
+
+        aimProvider = GetComponentInParent<IAimProvider>();
     }
 
     private void Update()
@@ -32,8 +35,13 @@ public class AbilityRunner : MonoBehaviour
         if (ability == null || !IsReady) return false;
 
         AbilityContext context = new AbilityContext(transform, casterStats);
-        ability.Execute(context);
+
+        if (aimProvider != null)
+        {
+            context.forward = aimProvider.GetAimDirection();
+        }
         
+        ability.Execute(context);
         cooldownTimer = ability.cooldown;
         return true;
     }

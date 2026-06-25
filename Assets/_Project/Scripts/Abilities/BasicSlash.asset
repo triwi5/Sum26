@@ -17,10 +17,10 @@ MonoBehaviour:
   icon: {fileID: 0}
   damage: 25
   cooldown: 0.5
-  vfxPrefab: {fileID: 0}
+  vfxPrefab: {fileID: 1951452092769238652, guid: 04e3cce64991056429c7ca42e915ed40, type: 3}
   sfx: {fileID: 0}
   targetLayers:
     serializedVersion: 2
     m_Bits: 64
-  range: 4
-  coneAngle: 60
+  range: 3
+  coneAngle: 80

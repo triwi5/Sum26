@@ -7,6 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 6f;
     [SerializeField] private float gravity = -20f;
+    
+    [Header("Body Rotation")]
+    [SerializeField] private float bodyRotationSpeed = 15f;
 
     private CharacterController controller;
     private PlayerInputActions inputActions;
@@ -41,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        
+        
         Transform cam = Camera.main.transform;
         Vector3 camForward = cam.forward;
         Vector3 camRight = cam.right;
@@ -61,6 +66,16 @@ public class PlayerMovement : MonoBehaviour
            
         }
         Vector3 velocity = moveDirection * moveSpeed + Vector3.up * verticalVelocity;
+        
+        if (moveDirection.sqrMagnitude > 0.01f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                targetRotation,
+                bodyRotationSpeed * Time.deltaTime
+            );
+        }
         controller.Move(velocity * Time.deltaTime);
     }
 }
