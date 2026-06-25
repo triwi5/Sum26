@@ -15,6 +15,9 @@ public abstract class AbilityData : ScriptableObject
     [Header("Visuals")] 
     public GameObject vfxPrefab;
     public AudioClip sfx;
+    
+    [Header("Impact")]
+    public float hitPauseDuration = 0.08f;
 
     [Header("Targeting")]
     public LayerMask targetLayers;
@@ -38,7 +41,7 @@ public abstract class AbilityData : ScriptableObject
         if (damageable==null) damageable = hit.GetComponentInParent<IDamageable>();
         if (damageable == null) return;
 
-        DamageInfo info = new DamageInfo(GetFinalDamage(context), hit.transform.position);
+        DamageInfo info = new DamageInfo(GetFinalDamage(context), hit.transform.position, hitPauseDuration);
         damageable.TakeDamage(info);
     }
 
