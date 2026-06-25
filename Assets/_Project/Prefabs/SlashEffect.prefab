@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e6c7fd60cf01074f92ae404547308f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlashEffect
-  duration: 0.25
-  arcSegments: 16
+  duration: 0.15
+  arcSegments: 32
+  streakWidth: 0.25
   yOffset: 0.05
