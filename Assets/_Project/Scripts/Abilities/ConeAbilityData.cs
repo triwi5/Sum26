@@ -24,6 +24,16 @@ public class ConeAbilityData : AbilityData
             }
         }
 
-        SpawnFeedback(context.origin);
+        if (vfxPrefab != null)
+        {
+            GameObject vfx = Instantiate(vfxPrefab, context.origin, Quaternion.LookRotation(context.forward));
+            vfx.transform.SetParent(context.caster);
+            if (vfx.TryGetComponent<SlashEffect>(out SlashEffect slash))
+            {
+                slash.Play(coneAngle, range);
+            }
+        }
+
+        if (sfx != null) AudioSource.PlayClipAtPoint(sfx, context.origin);
     }
 }

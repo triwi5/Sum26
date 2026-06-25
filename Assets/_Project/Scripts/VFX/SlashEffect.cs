@@ -61,8 +61,8 @@ public class SlashEffect : MonoBehaviour
         for (int i = 0; i < arcSegments; i++)
         {
             triangles[i * 3] = 0;
-            triangles[i * 3 +1 ] = i + 2;
-            triangles[i * 3 + 2] = i + 1;
+            triangles[i * 3 +1 ] = i + 1;
+            triangles[i * 3 + 2] = i + 2;
         }
 
         mesh.vertices = vertices;
